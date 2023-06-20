@@ -1,0 +1,67 @@
+body {
+    background-color: #000000;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0px;
+}
+
+#game1{
+    border-radius: 10px;
+    background-color: #556B2F;
+    font-size: 12vh;
+    margin-top: 8vh;
+    color: #FFFFE0;
+}
+
+#window{ 
+    width: 60vh;
+    border-radius: 10px;
+    background-color: #C0C0C0;
+    margin-top: 9vh;
+    height: 80vh;
+        
+}
+#Name1{
+    width: 40vh;
+    height: 3vh;
+    margin-top: 1vh;
+    font-size:3vh;
+    background-color: #556B2F;
+    color: #FFFFE0;
+    text-align: center;
+    border-radius: 10px;
+}
+h2{
+    margin: 0px;
+    margin-top: 1vh;
+    font-size: 4vh;
+    color: #FFFFE0;
+}
+#man{
+    width: 5vh;
+    height: 5vh;
+    margin-right: 12.5vh;
+}
+#girl{
+    width: 5vh;
+    height: 5vh;
+    margin-left: 12.5vh;
+}
+.selection{
+    margin-top: 5vh;
+    height: 25vh;
+    width: 60vh;
+}
+#IkonMan{
+    width: 20vh;
+    height: 20vh;
+    margin-right: 5vh;
+    margin-left: 0vh
+        
+}
+#IkonGirl{
+    width: 20vh;
+    height: 20vh;
+    margin-left: 5vh;
+}
