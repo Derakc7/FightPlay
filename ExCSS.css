@@ -3,7 +3,7 @@ body {
     display:flex;
     justify-content: center;
     text-align: center;
-    padding: 0px;
+    
 }
 
 #game1{
@@ -56,12 +56,12 @@ h2{
 #IkonMan{
     width: 20vh;
     height: 20vh;
-    margin-right: 5vh;
-    margin-left: 0vh
-        
+    margin-right: 5vh; 
+    margin-left: 4.5vh;
 }
 #IkonGirl{
     width: 20vh;
     height: 20vh;
     margin-left: 5vh;
+    margin-right: 4.5vh; 
 }
