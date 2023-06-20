@@ -9,21 +9,20 @@ body {
 #game1{
     border-radius: 10px;
     background-color: #556B2F;
-    font-size: 12vh;
+    font-size: 400%;
     margin-top: 8vh;
     color: #FFFFE0;
 }
 
 #window{ 
-    width: 60vh;
+    width: 80%;
     border-radius: 10px;
     background-color: #C0C0C0;
     margin-top: 9vh;
-    height: 80vh;
         
 }
 #Name1{
-    width: 40vh;
+    width: 90%;
     height: 3vh;
     margin-top: 1vh;
     font-size:3vh;
@@ -39,29 +38,26 @@ h2{
     color: #FFFFE0;
 }
 #man{
-    width: 5vh;
+    width: 20%;
     height: 5vh;
-    margin-right: 12.5vh;
+    margin-right: 12.5%;
 }
 #girl{
-    width: 5vh;
+    width: 20%;
     height: 5vh;
-    margin-left: 12.5vh;
+    margin-left: 12.5%;
 }
 .selection{
     margin-top: 5vh;
-    height: 25vh;
-    width: 60vh;
+    width: 100%;
 }
 #IkonMan{
-    width: 20vh;
-    height: 20vh;
-    margin-right: 5vh; 
-    margin-left: 4.5vh;
+    width: 35%;
+    margin-right: 5%; 
+    
 }
 #IkonGirl{
-    width: 20vh;
-    height: 20vh;
-    margin-left: 5vh;
-    margin-right: 4.5vh; 
+    width: 35%;
+    margin-left: 5%;
+    
 }
