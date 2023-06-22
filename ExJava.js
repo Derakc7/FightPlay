@@ -34,20 +34,20 @@ const I1 = function myName(){
     //console.log(personaGirl);
     let Persona;
     if(personaMan){
-        Persona = "Ты выбрали Парня";
+        Persona = "Ты выбрал Парня";
         You = 1;
     } else if(personaGirl){
-        Persona = "Ты выбрали Девушку";
+        Persona = "Ты выбрал Девушку";
         You = 2;
     } else{
         Persona = true;
     }
     while(Persona == true){
-        alert("Ты не выбрали персонажа!");
+        alert("Ты не выбрал персонажа!");
         Persona = false;
         location.reload();
     }
-    if(Persona == "Ты выбрали Парня" || Persona == "Ты выбрали Девушку"){
+    if(Persona == "Ты выбрал Парня" || Persona == "Ты выбрал Девушку"){
         alert(`Привет ${inputName}. ${Persona}`);
         Window.hidden = true;
         SelectionField.hidden = false;
@@ -63,6 +63,37 @@ function startFight(){
     worldFight.hidden = false;
 }
 fight.addEventListener('click', startFight);
+
+//Сама бевая система
+let Character = document.getElementById("Ikon1");
+
+let specifications = document.getElementById("P");
+
+let XP;
+let Damage;
+let Scill;
+function Specifications(){
+    if(You == 1){
+        XP = 75;
+        Damage = 20;
+        Scill = 50;
+        specifications.textContent = `|Здоровье: ${XP}  ` + `|Урон: ${Damage} ` + `|Скилл: ХР врага -${Scill}`;
+    }
+    else{
+        XP = 100;
+        Damage = 15;
+        Scill = 100;
+        specifications.textContent = `|Здоровье: ${XP}  ` + `|Урон: ${Damage} ` + `|Скилл: ХР+${Scill}`;
+        
+        
+        Character.src = "ФайтЯе.jpg";
+    }
+}
+fight.addEventListener('click', Specifications);
+
+let enemy = document.getElementById("PEnemy");
+enemy.textContent = `|Здоровье врага: 200  ` + `|Урон врага: 10 ` + `|Скилл: Урон +20`;
+
 
 
 
