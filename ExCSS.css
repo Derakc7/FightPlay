@@ -6,7 +6,7 @@ body {
     
 }
 
-#game1{
+.ColorButton{
     border-radius: 10px;
     background-color: #556B2F;
     font-size: 400%;
@@ -59,5 +59,59 @@ h2{
 #IkonGirl{
     width: 35%;
     margin-left: 5%;
+}
+
+
+#selectionField{
+    background-color: #556B2F;
+    width: 80%;
+    height: 60vh;
+    margin-top: 20vh;
+    border-radius: 20px;
+}
+p{
+    font-size: 200%;
+    color: #FFFFE0;
+    background-color: #384521;
+    margin: 0px;
+    border-radius: 20px;
+}
+
+
+
+.windoFight{
+    width: 100%;
+    height: 30vh;
+    border-radius: 10px;
+    background-color: #556B2F;
+}
+#Ikon1{
+    width: 15vh;
+    height: 15vh;
+    margin: 0px;
+    margin-top: 20vh;
     
+    border: 1vh solid #556B2F;
+    border-radius: 10px;
+    margin-right: auto;
+}
+#Ikon2{
+    width: 15vh;
+    height: 15vh;
+    margin: 0px;
+    margin-top: 20vh;
+    
+    border: 1vh solid #556B2F;
+    border-radius: 10px;
+    margin-left: auto;
+}
+.Cart{
+    display: flex;
+    width: 100%;
+    line-height: 0px;
+}
+#WorldFight{
+    width: 70%;
+    line-height: 0px;
+    height: 70vh;
 }

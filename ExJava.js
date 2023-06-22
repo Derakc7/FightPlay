@@ -1,18 +1,31 @@
-const buttonGame = document.getElementById("game1");
+let buttonGame = document.querySelectorAll('.ColorButton');
 console.log(buttonGame);
 function colorOver(){
-buttonGame.style.backgroundColor = "#6B8E23";
+    for(let i = 0; i <buttonGame.length; i++){
+        let msg = buttonGame[i];
+        msg.style.backgroundColor = "#6B8E23"; 
+    }
 }
 function colorOut(){
-buttonGame.style.backgroundColor = "#808000";
+    for(let i = 0; i <buttonGame.length; i++){
+        let msg = buttonGame[i];
+        msg.style.backgroundColor = "#384521";; 
+    }
 }
-buttonGame.addEventListener('mouseover', colorOver);
-buttonGame.addEventListener('mouseout', colorOut);
+buttonGame[0].addEventListener('mouseover', colorOver);
+buttonGame[0].addEventListener('mouseout', colorOut);
+buttonGame[1].addEventListener('mouseover', colorOver);
+buttonGame[1].addEventListener('mouseout', colorOut);
 
 
 //По нажатию кнопки сохраняются данные которые игрок ввёл и переход на следующую страницу 
-
-function myName(){
+const Window = document.getElementById("window");
+const SelectionField = document.getElementById("selectionField");
+const worldFight = document.getElementById("WorldFight");
+let You;
+let a = document.getElementById("Saef1");
+console.log(a);
+const I1 = function myName(){
     const inputName = document.getElementById("Name1").value;
     //console.log(inputName);
     const personaMan = document.getElementById("man").checked;
@@ -22,8 +35,10 @@ function myName(){
     let Persona;
     if(personaMan){
         Persona = "Ты выбрали Парня";
+        You = 1;
     } else if(personaGirl){
         Persona = "Ты выбрали Девушку";
+        You = 2;
     } else{
         Persona = true;
     }
@@ -34,11 +49,20 @@ function myName(){
     }
     if(Persona == "Ты выбрали Парня" || Persona == "Ты выбрали Девушку"){
         alert(`Привет ${inputName}. ${Persona}`);
-        location.href = 'ChoosingaOpponent.html'
+        Window.hidden = true;
+        SelectionField.hidden = false;
     }
-
 }
-buttonGame.addEventListener('click', myName);
+a.addEventListener('click', I1);
 
-//Далее идёт код для работы сайта ChoosingaOpponent.html
+//Далее идёт код для работы с боями
+const fight = document.getElementById("Fight");
+
+function startFight(){
+    SelectionField.hidden = true;
+    worldFight.hidden = false;
+}
+fight.addEventListener('click', startFight);
+
+
 
