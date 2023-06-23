@@ -1,34 +1,44 @@
 let buttonGame = document.querySelectorAll('.ColorButton');
 console.log(buttonGame);
 function colorOver1(){
-        buttonGame[0].style.backgroundColor = "#6B8E23";
+        buttonGame[0].style.backgroundColor = "#A7FF83";
+        buttonGame[0].style.color = "black";
 }
 function colorOut1(){
-        buttonGame[0].style.backgroundColor = "#384521";
+        buttonGame[0].style.backgroundColor = "#086972";
+        buttonGame[0].style.color = "white";
 }
 function colorOver2(){
-        buttonGame[1].style.backgroundColor = "#6B8E23";
+        buttonGame[1].style.backgroundColor = "#A7FF83";
+        buttonGame[1].style.color = "black";
 }
 function colorOut2(){
-        buttonGame[1].style.backgroundColor = "#384521";
+        buttonGame[1].style.backgroundColor = "#086972";
+        buttonGame[1].style.color = "white";
 }
 function colorOver3(){
-        buttonGame[2].style.backgroundColor = "#6B8E23";
+        buttonGame[2].style.backgroundColor = "#A7FF83";
+        buttonGame[2].style.color = "black";
 }
 function colorOut3(){
-        buttonGame[2].style.backgroundColor = "#556B2F";
+        buttonGame[2].style.backgroundColor = "#086972";
+        buttonGame[2].style.color = "white";
 }
 function colorOver4(){
-        buttonGame[3].style.backgroundColor = "#6B8E23";
+        buttonGame[3].style.backgroundColor = "#A7FF83";
+        buttonGame[3].style.color = "black";
 }
 function colorOut4(){
-        buttonGame[3].style.backgroundColor = "#556B2F";
+        buttonGame[3].style.backgroundColor = "#086972";
+        buttonGame[3].style.color = "white";
 }
 function colorOver5(){
-        buttonGame[4].style.backgroundColor = "#6B8E23";
+        buttonGame[4].style.backgroundColor = "#A7FF83";
+        buttonGame[4].style.color = "black";
 }
 function colorOut5(){
-        buttonGame[4].style.backgroundColor = "#556B2F";
+        buttonGame[4].style.backgroundColor = "#086972";
+        buttonGame[4].style.color = "white";
 }
 
 buttonGame[0].addEventListener('mouseover', colorOver1);
@@ -95,6 +105,7 @@ fight.addEventListener('click', startFight);
 //Сама бевая система
 let Win = 0;
 let Character = document.getElementById("Ikon1");
+let MonsterCharacter = document.getElementById("Ikon2");
 
 let specifications = document.querySelectorAll('.Abilities');
 console.log(specifications);
@@ -142,6 +153,62 @@ function attack(){
     OrkXP = OrkXP - Damage;
     enemy[0].textContent = `XP: ${OrkXP}`;
     buttonEnergeScill = buttonEnergeScill + 1;
+    if(OrkXP <= 0){
+        worldFight.hidden = true;
+        SelectionField.hidden = false;
+        Win = Win + 1;
+        OrkXP = (OrkXP*0) +100;
+        OrkDamage = (OrkDamage*0)+10;
+        OrkEnergeScill = 0;
+        enemy[0].textContent = `XP: ${OrkXP}`; 
+        enemy[1].textContent = `Damage: ${OrkDamage}`;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
+        alert(`You Win!!! Количество побед: ${Win}`);
+        return;
+    }
+    Character.style.borderColor = "#086972";
+    MonsterCharacter.style.borderColor = "red";
+    setTimeout(MonsterAttack, 500);
+}
+buttonAttack.addEventListener('click', attack);
+function hill(){
+    XP = XP + 15;
+    specifications[0].textContent = `XP: ${XP}`;
+    buttonEnergeScill = buttonEnergeScill + 1;
+    
+    setTimeout(MonsterAttack, 500);
+}
+buttonHill.addEventListener('click', hill);
+function scill(){
+    if(buttonEnergeScill >= 3){
+        if(You == 1){
+            XP = XP + Scill;
+            specifications[0].textContent = `XP: ${XP}`;
+            buttonEnergeScill = buttonEnergeScill - 3;
+        }else{
+            Damage = Damage + Scill;
+            specifications[1].textContent = `Damage: ${Damage}`;
+            buttonEnergeScill = buttonEnergeScill - 3;
+        }
+        
+    }else{
+        alert("Для испльзования скила нужно сделать минимум 3 действия!");
+    }
+    
+    setTimeout(MonsterAttack, 500);
+}
+buttonScill.addEventListener('click', scill);
+
+
+
+let GetRandom; 
+function getRandom(){
+    GetRandom = Math.random();
+}
+
+
+function MonsterAttack(){
+    MonsterCharacter.style.borderColor = "red";
     getRandom();
     if(OrkEnergeScill == 3){
         alert('О нет, Орк использовал супер приём!');
@@ -170,90 +237,14 @@ function attack(){
         enemy[1].textContent = `Damage: ${OrkDamage}`;
         WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
         alert(`You Win!!! Количество побед: ${Win}`);
-    };
-    if(XP <= 0){
-        alert('Ты проиграл!');
-        location.reload();
-    }
-}
-buttonAttack.addEventListener('click', attack);
-function hill(){
-    XP = XP + 15;
-    specifications[0].textContent = `XP: ${XP}`;
-    buttonEnergeScill = buttonEnergeScill + 1;
-    
-    getRandom();
-    if(OrkEnergeScill == 3){
-        alert('О нет, Орк использовал супер приём!');
-        OrkDamage = OrkDamage + 10;
-        OrkEnergeScill = OrkEnergeScill - 3;
-        enemy[1].textContent = `Damage: ${OrkDamage}`;
-    }else if(GetRandom < 0.5){
-        alert('О нет, Орк подлечился!');
-        OrkXP = OrkXP + 14;
-        OrkEnergeScill = OrkEnergeScill + 1;
-        enemy[0].textContent = `XP: ${OrkXP}`;
-    }else if(GetRandom > 0.5){
-        alert('О нет, Орк атаковал!');
-        XP = XP - OrkDamage;
-        OrkEnergeScill = OrkEnergeScill + 1;
-        specifications[0].textContent = `XP: ${XP}`;
     }
     if(XP <= 0){
         alert('Ты проиграл!');
         location.reload();
     }
+    Character.style.borderColor = "red";
+    MonsterCharacter.style.borderColor = "#086972";
 }
-buttonHill.addEventListener('click', hill);
-function scill(){
-    if(buttonEnergeScill >= 3){
-        if(You == 1){
-            XP = XP + Scill;
-            specifications[0].textContent = `XP: ${XP}`;
-            buttonEnergeScill = buttonEnergeScill - 3;
-        }else{
-            Damage = Damage + Scill;
-            specifications[1].textContent = `Damage: ${Damage}`;
-            buttonEnergeScill = buttonEnergeScill - 3;
-        }
-        
-    }else{
-        alert("Для испльзования скила нужно сделать минимум 3 действия!");
-    }
-    
-    getRandom();
-    if(OrkEnergeScill == 3){
-        alert('О нет, Орк использовал супер приём!');
-        OrkDamage = OrkDamage + 10;
-        OrkEnergeScill = OrkEnergeScill - 3;
-        enemy[1].textContent = `Damage: ${OrkDamage}`;
-    }else if(GetRandom < 0.5){
-        alert('О нет, Орк подлечился!');
-        OrkXP = OrkXP + 14;
-        OrkEnergeScill = OrkEnergeScill + 1;
-        enemy[0].textContent = `XP: ${OrkXP}`;
-    }else if(GetRandom > 0.5){
-        alert('О нет, Орк атаковал!');
-        XP = XP - OrkDamage;
-        OrkEnergeScill = OrkEnergeScill + 1;
-        specifications[0].textContent = `XP: ${XP}`;
-    }
-    if(XP <= 0){
-        alert('Ты проиграл!');
-        location.reload();
-    }
-}
-buttonScill.addEventListener('click', scill);
-
-
-
-let GetRandom; 
-function getRandom(){
-    GetRandom = Math.random();
-}
-
-
-
 
 
 

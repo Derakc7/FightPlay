@@ -1,5 +1,5 @@
 body {
-    background-color: #000000;
+    background-color: #071A52;
     display:flex;
     justify-content: center;
     text-align: center;
@@ -8,34 +8,34 @@ body {
 
 .ColorButton{
     border-radius: 10px;
-    background-color: #556B2F;
+    background-color: #086972;
     font-size: 8vh;
     margin-top: 8vh;
-    color: #FFFFE0;
+    color: white;
 }
 
 #window{ 
     width: 80%;
     border-radius: 10px;
-    background-color: #C0C0C0;
+    background-color: #17B978;
     margin-top: 9vh;
         
 }
 #Name1{
     width: 90%;
-    height: 3vh;
+    height: 6vh;
     margin-top: 1vh;
-    font-size:3vh;
-    background-color: #556B2F;
-    color: #FFFFE0;
+    font-size:5vh;
+    background-color: #086972;
+    color: #A7FF83;
     text-align: center;
     border-radius: 10px;
 }
 h2{
     margin: 0px;
     margin-top: 1vh;
-    font-size: 4vh;
-    color: #FFFFE0;
+    font-size: 5vh;
+    color: #A7FF83;
 }
 #man{
     width: 20%;
@@ -63,7 +63,7 @@ h2{
 
 
 #selectionField{
-    background-color: #556B2F;
+    background-color: #17B978;
     width: 80%;
     height: 60vh;
     margin-top: 20vh;
@@ -72,7 +72,8 @@ h2{
 #w{
     font-size: 4vh;
     color: #FFFFE0;
-    background-color: #384521;
+    color: black;
+    background-color: #A7FF83;
     margin: 0px;
     border-radius: 20px;
 }
@@ -81,7 +82,7 @@ h2{
     width: 100% + 2vh;
     height: 23vh;
     border-radius: 10px;
-    background-color: #556B2F;
+    background-color: #086972;
 }
 #P{
     font-size: 3vh;
@@ -89,7 +90,7 @@ h2{
     color: #FFFFE0;
     margin-top: 3vh;
     width: 19vh;
-    background-color:#556B2F;
+    background-color:#086972;
     word-wrap:normal;
     line-height: 3vh;
     text-align: left;
@@ -101,7 +102,7 @@ h2{
     margin-top: 3vh;
     width: 15vh;
     height: 18vh;
-    background-color:#556B2F;
+    background-color:#086972;
     word-wrap:normal;
     line-height: 3vh;
     margin-right: auto;
@@ -113,7 +114,7 @@ h2{
     margin-top: 3vh;
     width: 15vh;
     height: 18vh;
-    background-color:#556B2F;
+    background-color:#086972;
     word-wrap:normal;
     line-height: 3vh;
     margin-left: auto;
@@ -135,7 +136,7 @@ h2{
     margin: 0px;
     margin-top: 22vh;
     
-    border: 1vh solid #556B2F;
+    border: 1vh solid red;
     border-radius: 10px;
     margin-right: auto;
 }
@@ -145,7 +146,7 @@ h2{
     margin: 0px;
     margin-top: 22vh;
     
-    border: 1vh solid #556B2F;
+    border: 1vh solid #086972;
     border-radius: 10px;
     margin-left: auto;
 }
