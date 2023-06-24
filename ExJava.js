@@ -149,10 +149,18 @@ buttonHill = document.getElementById("Xill");
 buttonScill = document.getElementById("Q");
 let buttonEnergeScill = 0;
 
+Character.style.borderColor = "red";
+let heightMotion = document.getElementById("Height1");
+heightMotion.textContent = 'Ваш ход';
+    
 function attack(){
+    if(Character.style.borderColor == "red"){
+    heightMotion.textContent = 'Ваш ход';
     OrkXP = OrkXP - Damage;
     enemy[0].textContent = `XP: ${OrkXP}`;
     buttonEnergeScill = buttonEnergeScill + 1;
+    }
+        
     if(OrkXP <= 0){
         worldFight.hidden = true;
         SelectionField.hidden = false;
@@ -172,15 +180,22 @@ function attack(){
 }
 buttonAttack.addEventListener('click', attack);
 function hill(){
-    XP = XP + 15;
+    heightMotion.textContent = 'Ваш ход';
+    if(Character.style.borderColor == "red"){
+        XP = XP + 15;
     specifications[0].textContent = `XP: ${XP}`;
     buttonEnergeScill = buttonEnergeScill + 1;
-    
+        
+    }
+    Character.style.borderColor = "#086972";
+    MonsterCharacter.style.borderColor = "red";
     setTimeout(MonsterAttack, 500);
 }
 buttonHill.addEventListener('click', hill);
 function scill(){
-    if(buttonEnergeScill >= 3){
+    heightMotion.textContent = 'Ваш ход';
+    if(Character.style.borderColor = "red"){
+         if(buttonEnergeScill >= 3){
         if(You == 1){
             XP = XP + Scill;
             specifications[0].textContent = `XP: ${XP}`;
@@ -193,8 +208,13 @@ function scill(){
         
     }else{
         alert("Для испльзования скила нужно сделать минимум 3 действия!");
+        return;
     }
     
+        
+    }
+    Character.style.borderColor = "#086972";
+    MonsterCharacter.style.borderColor = "red";
     setTimeout(MonsterAttack, 500);
 }
 buttonScill.addEventListener('click', scill);
@@ -208,20 +228,20 @@ function getRandom(){
 
 
 function MonsterAttack(){
-    MonsterCharacter.style.borderColor = "red";
-    getRandom();
+    if(MonsterCharacter.style.borderColor == "red"){
+       getRandom();
     if(OrkEnergeScill == 3){
-        alert('О нет, Орк использовал супер приём!');
+        heightMotion.textContent = 'Ход врага: противник использовал Scill';
         OrkDamage = OrkDamage + 10;
         OrkEnergeScill = OrkEnergeScill - 3;
         enemy[1].textContent = `Damage: ${OrkDamage}`;
     }else if(GetRandom < 0.5){
-        alert('О нет, Орк подлечился!');
+        heightMotion.textContent = 'Ход врага: противник использовал лечение. ХР-врага + 14';
         OrkXP = OrkXP + 14;
         OrkEnergeScill = OrkEnergeScill + 1;
         enemy[0].textContent = `XP: ${OrkXP}`;
     }else if(GetRandom > 0.5){
-        alert('О нет, Орк атаковал!');
+        heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${OrkDamage}`;
         XP = XP - OrkDamage;
         OrkEnergeScill = OrkEnergeScill + 1;
         specifications[0].textContent = `XP: ${XP}`;
@@ -242,6 +262,7 @@ function MonsterAttack(){
         alert('Ты проиграл!');
         location.reload();
     }
+       }
     Character.style.borderColor = "red";
     MonsterCharacter.style.borderColor = "#086972";
 }
