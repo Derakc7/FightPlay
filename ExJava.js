@@ -96,11 +96,14 @@ a.addEventListener('click', I1);
 //Далее идёт код для работы с боями
 const fight = document.getElementById("Fight");
 
+const fight1 = document.getElementById("Fight1");
+
 function startFight(){
     SelectionField.hidden = true;
     worldFight.hidden = false;
 }
 fight.addEventListener('click', startFight);
+fight1.addEventListener('click', startFight);
 
 //Сама бевая система
 let Win = 0;
@@ -109,9 +112,16 @@ let MonsterCharacter = document.getElementById("Ikon2");
 
 let specifications = document.querySelectorAll('.Abilities');
 console.log(specifications);
+
 let XP;
 let Damage;
 let Scill;
+
+let MonsterXP = 100;
+let MonsterDamage = 10;
+let MonsterEnergeScill = 0;
+
+
 function Specifications(){
     if(You == 1){
         XP = 75;
@@ -131,22 +141,49 @@ function Specifications(){
         
         Character.src = "ФайтЯе.jpg";
     }
+    MonsterCharacter.src = "Орк.jpg";
 }
+function Specifications1(){
+    if(You == 1){
+        XP = 75;
+        Damage = 20;
+        Scill = 50;
+        specifications[0].textContent = `XP: ${XP}`;
+        specifications[1].textContent = `Damage: ${Damage}`;
+        specifications[2].textContent = `Scill: XP+${Scill}`;
+    }
+    else{
+        XP = 100;
+        Damage = 15;
+        Scill = 10;
+        specifications[0].textContent = `XP: ${XP}`;
+        specifications[1].textContent = `Damage: ${Damage}`;
+        specifications[2].textContent = `Damage: +${Scill}`;
+        
+        Character.src = "ФайтЯе.jpg";
+    }
+    MonsterCharacter.src = "Скелет.jpg";
+    MonsterXP = 65;
+    MonsterDamage = 30;
+    MonsterEnergeScill = 0;
+    enemy[0].textContent = `XP: ${MonsterXP}`; 
+    enemy[1].textContent = `Damage: ${MonsterDamage}`;
+    enemy[2].textContent = 'Scill: Юморист'; 
+}
+
 fight.addEventListener('click', Specifications);
+fight1.addEventListener('click', Specifications1);
 
 let enemy = document.querySelectorAll('.Enemy');
-let OrkXP = 100;
-let OrkDamage = 10;
-let OrkEnergeScill = 0;
-enemy[0].textContent = `XP: ${OrkXP}`; 
-enemy[1].textContent = `Damage: ${OrkDamage}`;
-enemy[2].textContent = `Scill: ${"Damage" + "+" + 10}`; 
-
+    enemy[0].textContent = `XP: ${MonsterXP}`; 
+    enemy[1].textContent = `Damage: ${MonsterDamage}`;
+    enemy[2].textContent = `Scill: ${"Damage" + "+" + 10}`; 
 
 
 buttonAttack = document.getElementById("Attack");
 buttonHill = document.getElementById("Xill");
 buttonScill = document.getElementById("Q");
+
 let buttonEnergeScill = 0;
 
 Character.style.borderColor = "red";
@@ -156,20 +193,20 @@ heightMotion.textContent = 'Ваш ход';
 function attack(){
     if(Character.style.borderColor == "red"){
     heightMotion.textContent = 'Ваш ход';
-    OrkXP = OrkXP - Damage;
-    enemy[0].textContent = `XP: ${OrkXP}`;
+    MonsterXP = MonsterXP - Damage;
+    enemy[0].textContent = `XP: ${MonsterXP}`;
     buttonEnergeScill = buttonEnergeScill + 1;
     }
         
-    if(OrkXP <= 0){
+    if(MonsterXP <= 0){
         worldFight.hidden = true;
         SelectionField.hidden = false;
         Win = Win + 1;
-        OrkXP = (OrkXP*0) +100;
-        OrkDamage = (OrkDamage*0)+10;
-        OrkEnergeScill = 0;
-        enemy[0].textContent = `XP: ${OrkXP}`; 
-        enemy[1].textContent = `Damage: ${OrkDamage}`;
+        MonsterXP = (MonsterXP*0) +100;
+        MonsterDamage = (MonsterDamage*0)+10;
+        enemy[0].textContent = `XP: ${MonsterXP}`;
+        enemy[1].textContent = `Damage: ${MonsterDamage}`;
+        MonsterEnergeScill = 0;
         WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
         alert(`You Win!!! Количество побед: ${Win}`);
         return;
@@ -226,35 +263,36 @@ function getRandom(){
     GetRandom = Math.random();
 }
 
+let XPHerous;
+let XPZla;
 
 function MonsterAttack(){
-    if(MonsterCharacter.style.borderColor == "red"){
-       getRandom();
-    if(OrkEnergeScill == 3){
-        heightMotion.textContent = 'Ход врага: противник использовал Scill';
-        OrkDamage = OrkDamage + 10;
-        OrkEnergeScill = OrkEnergeScill - 3;
-        enemy[1].textContent = `Damage: ${OrkDamage}`;
+  if(MonsterCharacter.src == "Орк.jpg"){
+        getRandom();
+        console.log(GetRandom);
+    if(MonsterEnergeScill == 3){
+        heightMotion.textContent = 'Scill врага: противник использовал Scill';
+        MonsterDamage = MonsterDamage + 10;
+        MonsterEnergeScill = MonsterEnergeScill - 3;
+        enemy[1].textContent = `Damage: ${MonsterDamage}`;
     }else if(GetRandom < 0.5){
-        heightMotion.textContent = 'Ход врага: противник использовал лечение. ХР-врага + 14';
-        OrkXP = OrkXP + 14;
-        OrkEnergeScill = OrkEnergeScill + 1;
-        enemy[0].textContent = `XP: ${OrkXP}`;
+        heightMotion.textContent = 'Ход врага: противник излечился. ХР + 14';
+        MonsterXP = MonsterXP + 14;
+        MonsterEnergeScill = MonsterEnergeScill + 1;
+        enemy[0].textContent = `XP: ${MonsterXP}`;
     }else if(GetRandom > 0.5){
-        heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${OrkDamage}`;
-        XP = XP - OrkDamage;
-        OrkEnergeScill = OrkEnergeScill + 1;
+        heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${MonsterDamage}`;
+        XP = XP - MonsterDamage;
+        MonsterEnergeScill = MonsterEnergeScill + 1;
         specifications[0].textContent = `XP: ${XP}`;
     }
-    if(OrkXP <= 0){
+    if(MonsterXP <= 0){
         worldFight.hidden = true;
         SelectionField.hidden = false;
         Win = Win + 1;
-        OrkXP = (OrkXP*0) +100;
-        OrkDamage = (OrkDamage*0)+10;
-        OrkEnergeScill = 0;
-        enemy[0].textContent = `XP: ${OrkXP}`; 
-        enemy[1].textContent = `Damage: ${OrkDamage}`;
+        MonsterXP = (MonsterXP*0) +100;
+        MonsterDamage = (MonsterDamage*0)+10;
+        MonsterEnergeScill = 0;
         WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
         alert(`You Win!!! Количество побед: ${Win}`);
     }
@@ -262,10 +300,56 @@ function MonsterAttack(){
         alert('Ты проиграл!');
         location.reload();
     }
-       }
-    Character.style.borderColor = "red";
+        Character.style.borderColor = "red";
     MonsterCharacter.style.borderColor = "#086972";
+  }
+
+    
+  else if(MonsterCharacter.src = "Скелет.jpg"){
+      getRandom();
+        console.log(GetRandom);
+      
+    if(MonsterEnergeScill == 3){
+        heightMotion.textContent = 'Scill врага: поменял ХР местами';
+        XPHerous = XP;
+        XPZla = MonsterXP;
+        XP = XPZla;
+        MonsterXP = XPHerous;
+        MonsterEnergeScill = MonsterEnergeScill - 3;
+        enemy[0].textContent = `XP: ${MonsterXP}`;
+        specifications[0].textContent = `XP: ${XP}`;
+    }else if(GetRandom < 0.5){
+        heightMotion.textContent = 'Ход врага: противник излечился. ХР + 14';
+        console.log(MonsterXP);
+        MonsterXP = MonsterXP + 14;
+        console.log(MonsterXP);
+        MonsterEnergeScill = MonsterEnergeScill + 1;
+        enemy[0].textContent = `XP: ${MonsterXP}`;
+    }else if(GetRandom > 0.5){
+        heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${MonsterDamage}`;
+        XP = XP - MonsterDamage;
+        MonsterEnergeScill = MonsterEnergeScill + 1;
+        specifications[0].textContent = `XP: ${XP}`;
+    }
+    if(MonsterXP <= 0){
+        worldFight.hidden = true;
+        SelectionField.hidden = false;
+        Win = Win + 1;
+        MonsterXP = (MonsterXP*0) + 65;
+        MonsterDamage = (MonsterDamage*0)+30;
+        MonsterEnergeScill = 0;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
+        alert(`You Win!!! Количество побед: ${Win}`);
+    }
+    if(XP <= 0){
+        alert('Ты проиграл!');
+        location.reload();
+    }
+        Character.style.borderColor = "red";
+        MonsterCharacter.style.borderColor = "#086972";
+  }
 }
+    
 
 
 

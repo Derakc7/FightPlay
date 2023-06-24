@@ -62,6 +62,7 @@ h2{
 }
 
 
+
 #selectionField{
     background-color: #17B978;
     width: 80%;
@@ -77,6 +78,12 @@ h2{
     margin: 0px;
     border-radius: 20px;
 }
+#Fight1{
+    margin-top: 1vh;
+}
+
+
+
 .windoFight{
     display:flex;
     width: 100% + 2vh;
