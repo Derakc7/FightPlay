@@ -180,7 +180,7 @@ function Specifications2(){
     if(You == 1){
         XP = 75;
         Damage = 20;
-        Scill = 40;
+        Scill = 35;
         specifications[0].textContent = `XP: ${XP}`;
         specifications[1].textContent = `Damage: ${Damage}`;
         specifications[2].textContent = `Scill: XP+${Scill}`;
@@ -198,7 +198,7 @@ function Specifications2(){
     Monster = 3;
     MonsterCharacter.src = "Хранитель.jpg";
     MonsterXP = 200;
-    MonsterDamage = 5;
+    MonsterDamage = 10;
     MonsterEnergeScill = 0;
     enemy[0].textContent = `XP: ${MonsterXP}`; 
     enemy[1].textContent = `Damage: ${MonsterDamage}`;
@@ -394,13 +394,13 @@ function MonsterAttack(){
         XP = XP - 50;
         MonsterEnergeScill = MonsterEnergeScill - 3;
         specifications[0].textContent = `XP: ${XP}`;
-    }else if(GetRandom < 0.5){
+    }else if(GetRandom < 0.6){
         heightMotion.textContent = 'Ход врага: противник излечился. ХР + 5';
         MonsterXP = MonsterXP + 5;
         console.log(MonsterXP);
         MonsterEnergeScill = MonsterEnergeScill + 1;
         enemy[0].textContent = `XP: ${MonsterXP}`;
-    }else if(GetRandom > 0.5){
+    }else if(GetRandom > 0.6){
         heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${MonsterDamage}`;
         XP = XP - MonsterDamage;
         MonsterEnergeScill = MonsterEnergeScill + 1;
@@ -411,7 +411,7 @@ function MonsterAttack(){
         SelectionField.hidden = false;
         Win = Win + 1;
         MonsterXP = (MonsterXP*0) + 200;
-        MonsterDamage = (MonsterDamage*0)+ 5;
+        MonsterDamage = (MonsterDamage*0)+ 10;
         MonsterEnergeScill = 0;
         WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
         alert(`You Win!!! Количество побед: ${Win}`);
