@@ -203,6 +203,14 @@ h2{
     font-size:200%;
 }
 
+
+#Finish{
+    width: 80%;
+    border-radius: 10px;
+    background-color: #17B978;
+    margin-top: 9vh;
+}
+
 @media  (max-width: 412px) and (max-height:900px){
     #Height1{
         font-size: 65%;

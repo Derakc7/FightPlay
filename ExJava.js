@@ -54,7 +54,7 @@ buttonGame[4].addEventListener('mouseout', colorOut5);
 
 
 //По нажатию кнопки сохраняются данные которые игрок ввёл и переход на следующую страницу 
-
+let inputName;
 let WP = document.getElementById("w");
 
 const Window = document.getElementById("window");
@@ -64,7 +64,7 @@ let You;
 let a = document.getElementById("Saef1");
 console.log(a);
 const I1 = function myName(){
-    const inputName = document.getElementById("Name1").value;
+    inputName = document.getElementById("Name1").value;
     //console.log(inputName);
     const personaMan = document.getElementById("man").checked;
     const personaGirl = document.getElementById("girl").checked;
@@ -107,6 +107,10 @@ function startFight(){
 fight.addEventListener('click', startFight);
 fight1.addEventListener('click', startFight);
 fight2.addEventListener('click', startFight);
+
+
+let finish = document.getElementById("Finish");
+let nameFinish = document.getElementById("NameFinish");
 
 //Сама бевая система
 let Win = 0;
@@ -192,7 +196,6 @@ function Specifications2(){
         specifications[0].textContent = `XP: ${XP}`;
         specifications[1].textContent = `Damage: ${Damage}`;
         specifications[2].textContent = `Damage: +${Scill}`;
-        
         Character.src = "ФайтЯе.jpg";
     }
     Monster = 3;
@@ -242,8 +245,14 @@ function attack(){
         enemy[0].textContent = `XP: ${MonsterXP}`;
         enemy[1].textContent = `Damage: ${MonsterDamage}`;
         MonsterEnergeScill = 0;
-        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
+        buttonEnergeScill = 0;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/10`;
         alert(`You Win!!! Количество побед: ${Win}`);
+        if(Win == 10){
+            SelectionField.hidden = true;
+            finish.hidden = false;
+            nameFinish.textContent = `${inputName} стал героем!`;
+        }
         return;
     }
     Character.style.borderColor = "#086972";
@@ -329,7 +338,7 @@ function MonsterAttack(){
         MonsterXP = (MonsterXP*0) +100;
         MonsterDamage = (MonsterDamage*0)+10;
         MonsterEnergeScill = 0;
-        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/10`;
         alert(`You Win!!! Количество побед: ${Win}`);
     }
     if(XP <= 0){
@@ -374,7 +383,7 @@ function MonsterAttack(){
         MonsterXP = (MonsterXP*0) + 65;
         MonsterDamage = (MonsterDamage*0)+30;
         MonsterEnergeScill = 0;
-        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/10`;
         alert(`You Win!!! Количество побед: ${Win}`);
     }
     if(XP <= 0){
@@ -413,7 +422,7 @@ function MonsterAttack(){
         MonsterXP = (MonsterXP*0) + 200;
         MonsterDamage = (MonsterDamage*0)+ 10;
         MonsterEnergeScill = 0;
-        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}`;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/10`;
         alert(`You Win!!! Количество побед: ${Win}`);
     }
     if(XP <= 0){
