@@ -40,6 +40,22 @@ function colorOut5(){
         buttonGame[4].style.backgroundColor = "#086972";
         buttonGame[4].style.color = "white";
 }
+function colorOver6(){
+        buttonGame[5].style.backgroundColor = "#A7FF83";
+        buttonGame[5].style.color = "black";
+}
+function colorOut6(){
+        buttonGame[5].style.backgroundColor = "#086972";
+        buttonGame[5].style.color = "white";
+}
+function colorOver7(){
+        buttonGame[6].style.backgroundColor = "#A7FF83";
+        buttonGame[6].style.color = "black";
+}
+function colorOut7(){
+        buttonGame[6].style.backgroundColor = "#086972";
+        buttonGame[6].style.color = "white";
+}
 
 buttonGame[0].addEventListener('mouseover', colorOver1);
 buttonGame[0].addEventListener('mouseout', colorOut1);
@@ -51,7 +67,10 @@ buttonGame[3].addEventListener('mouseover', colorOver4);
 buttonGame[3].addEventListener('mouseout', colorOut4);
 buttonGame[4].addEventListener('mouseover', colorOver5);
 buttonGame[4].addEventListener('mouseout', colorOut5);
-
+buttonGame[5].addEventListener('mouseover', colorOver6);
+buttonGame[5].addEventListener('mouseout', colorOut6);
+buttonGame[6].addEventListener('mouseover', colorOver7);
+buttonGame[6].addEventListener('mouseout', colorOut7);
 
 //По нажатию кнопки сохраняются данные которые игрок ввёл и переход на следующую страницу 
 let inputName;
@@ -149,6 +168,9 @@ function Specifications(){
         
         Character.src = "ФайтЯе.jpg";
     }
+    enemy[0].textContent = `XP: ${MonsterXP}`; 
+    enemy[1].textContent = `Damage: ${MonsterDamage}`;
+    enemy[2].textContent = `Scill: ${"Damage" + "+" + 10}`;
     MonsterCharacter.src = "Орк.jpg";
     Monster = 1;
 }
@@ -201,7 +223,7 @@ function Specifications2(){
     Monster = 3;
     MonsterCharacter.src = "Хранитель.jpg";
     MonsterXP = 200;
-    MonsterDamage = 10;
+    MonsterDamage = 2;
     MonsterEnergeScill = 0;
     enemy[0].textContent = `XP: ${MonsterXP}`; 
     enemy[1].textContent = `Damage: ${MonsterDamage}`;
@@ -213,9 +235,6 @@ fight1.addEventListener('click', Specifications1);
 fight2.addEventListener('click', Specifications2);
 
 let enemy = document.querySelectorAll('.Enemy');
-    enemy[0].textContent = `XP: ${MonsterXP}`; 
-    enemy[1].textContent = `Damage: ${MonsterDamage}`;
-    enemy[2].textContent = `Scill: ${"Damage" + "+" + 10}`; 
 
 
 buttonAttack = document.getElementById("Attack");
@@ -420,7 +439,7 @@ function MonsterAttack(){
         SelectionField.hidden = false;
         Win = Win + 1;
         MonsterXP = (MonsterXP*0) + 200;
-        MonsterDamage = (MonsterDamage*0)+ 10;
+        MonsterDamage = (MonsterDamage*0)+ 2;
         MonsterEnergeScill = 0;
         WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/10`;
         alert(`You Win!!! Количество побед: ${Win}`);
