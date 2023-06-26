@@ -454,7 +454,5 @@ function MonsterAttack(){
         
   }
 }
-    
-
 
 
