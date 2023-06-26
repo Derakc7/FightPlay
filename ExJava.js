@@ -111,20 +111,28 @@ const I1 = function myName(){
     }
 }
 a.addEventListener('click', I1);
+a.addEventListener('click', AudioFon);
 
 //Далее идёт код для работы с боями
 const fight = document.getElementById("Fight");
 
 const fight1 = document.getElementById("Fight1");
 
-const fight2 = document.getElementById("Fight2")
+const fight2 = document.getElementById("Fight2");
 
+let WindowFight = document.getElementById("windoFight");
 function startFight(){
     SelectionField.hidden = true;
     worldFight.hidden = false;
+    document.body.style.background = "#5C341E";
+}
+function startFight1(){
+    SelectionField.hidden = true;
+    worldFight.hidden = false;
+    document.body.style.background = "#5C341E";
 }
 fight.addEventListener('click', startFight);
-fight1.addEventListener('click', startFight);
+fight1.addEventListener('click', startFight1);
 fight2.addEventListener('click', startFight);
 
 
@@ -234,6 +242,10 @@ fight.addEventListener('click', Specifications);
 fight1.addEventListener('click', Specifications1);
 fight2.addEventListener('click', Specifications2);
 
+fight.addEventListener('click', AudioFonPeshera);
+fight1.addEventListener('click', AudioFonBar);
+fight2.addEventListener('click', AudioFonForest);
+
 let enemy = document.querySelectorAll('.Enemy');
 
 
@@ -248,6 +260,7 @@ let heightMotion = document.getElementById("Height1");
 heightMotion.textContent = 'Ваш ход';
     
 function attack(){
+    fonAttack();
     if(Character.style.borderColor == "red"){
     heightMotion.textContent = 'Ваш ход';
     MonsterXP = MonsterXP - Damage;
@@ -276,7 +289,7 @@ function attack(){
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
-    setTimeout(MonsterAttack, 500);
+    setTimeout(MonsterAttack, 1000);
 }
 buttonAttack.addEventListener('click', attack);
 function hill(){
@@ -289,7 +302,7 @@ function hill(){
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
-    setTimeout(MonsterAttack, 500);
+    setTimeout(MonsterAttack, 1000);
 }
 buttonHill.addEventListener('click', hill);
 function scill(){
@@ -315,7 +328,7 @@ function scill(){
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
-    setTimeout(MonsterAttack, 500);
+    setTimeout(MonsterAttack, 1000);
 }
 buttonScill.addEventListener('click', scill);
 
@@ -345,6 +358,7 @@ function MonsterAttack(){
         MonsterEnergeScill = MonsterEnergeScill + 1;
         enemy[0].textContent = `XP: ${MonsterXP}`;
     }else if(GetRandom > 0.5){
+        fonAttack();
         heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${MonsterDamage}`;
         XP = XP - MonsterDamage;
         MonsterEnergeScill = MonsterEnergeScill + 1;
@@ -390,6 +404,7 @@ function MonsterAttack(){
         MonsterEnergeScill = MonsterEnergeScill + 1;
         enemy[0].textContent = `XP: ${MonsterXP}`;
     }else if(GetRandom > 0.5){
+        fonAttack();
         heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${MonsterDamage}`;
         XP = XP - MonsterDamage;
         MonsterEnergeScill = MonsterEnergeScill + 1;
@@ -418,6 +433,7 @@ function MonsterAttack(){
         console.log(GetRandom);
       
     if(MonsterEnergeScill == 3){
+        fonAttack();
         heightMotion.textContent = 'Scill врага: Ваше ХР - 50';
         XP = XP - 50;
         MonsterEnergeScill = MonsterEnergeScill - 3;
@@ -429,6 +445,7 @@ function MonsterAttack(){
         MonsterEnergeScill = MonsterEnergeScill + 1;
         enemy[0].textContent = `XP: ${MonsterXP}`;
     }else if(GetRandom > 0.6){
+        fonAttack();
         heightMotion.textContent = `Ход врага: противник нанёс удар. ХР - ${MonsterDamage}`;
         XP = XP - MonsterDamage;
         MonsterEnergeScill = MonsterEnergeScill + 1;
@@ -455,4 +472,49 @@ function MonsterAttack(){
   }
 }
 
+//музакальная состовляющая игры
+let fon = document.getElementById("Fon");
+let fonBar = document.getElementById("fonFight1");
+let fonForest = document.getElementById("fonFight2");
+let fonPechera = document.getElementById("fonFight");
+function AudioFon(){
+    fon.play();
+    fon.volume = 0.2;
+}
+function AudioFonBar(){
 
+    fon.pause();
+    fonBar.play();
+    fonBar.volume = 0.2;
+    fonForest.pause();
+    fonPechera.pause();
+    fonForest.currentTime = 0;
+    fon.currentTime = 0;
+    fonPechera.currentTime = 0;
+}
+function AudioFonForest(){
+    fon.pause();
+    fonForest.play();
+    fonForest.volume = 0.2;
+    fonBar.pause();
+    fonPechera.pause();
+    fonBar.currentTime = 0;
+    fonPechera.currentTime = 0;
+    fon.currentTime = 0;
+}
+function AudioFonPeshera(){
+    fon.pause();
+    fonPechera.play();
+    fonPechera.volume = 0.2;
+    fonForest.pause();
+    fonBar.pause();
+    fonBar.currentTime = 0;
+    fon.currentTime = 0;
+    fonForest.currentTime = 0;
+}
+
+function fonAttack(){
+    let fonA = document.getElementById("attackFon");
+    fonA.play();
+    fonA.volume = 0.4;
+}
