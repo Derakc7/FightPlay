@@ -272,9 +272,9 @@ Character.style.borderColor = "red";
 heightMotion.textContent = 'Ваш ход';
     
 function attack(){
-   if(Character.style.borderColor == "red"){
-    fonAttack();
+    
     if(Character.style.borderColor == "red"){
+    fonAttack();
     heightMotion.textContent = 'Ваш ход';
     MonsterXP = MonsterXP - Damage;
     enemy[0].textContent = `XP: ${MonsterXP}`;
@@ -291,19 +291,21 @@ function attack(){
         enemy[1].textContent = `Damage: ${MonsterDamage}`;
         MonsterEnergeScill = 0;
         buttonEnergeScill = 0;
-        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/10`;
+        WP.textContent = `Выбери место куда ты хочешь отправиться! Побед:${Win}/5`;
         alert(`You Win!!! Количество побед: ${Win}`);
-        if(Win == 10){
+        document.body.style.background =  "#071A52";
+        if(Win == 5){
             SelectionField.hidden = true;
             finish.hidden = false;
             nameFinish.textContent = `${inputName} стал героем!`;
+            document.body.style.background =  "#071A52";
         }
         return;
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
     setTimeout(MonsterAttack, 1500);
- } 
+ 
 }
 buttonAttack.addEventListener('click', attack);
 function hill(){
