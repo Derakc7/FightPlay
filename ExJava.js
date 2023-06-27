@@ -1,5 +1,52 @@
+// ВСЕ ПЕРЕМЕННЫЕ_____________________________
+let inputName;
+let You;
+//Переменные игрока
+let Win = 0;
+let XP;
+let Damage;
+let Scill;
+let buttonEnergeScill = 0;
+//Переменные противнмка
+let Monster = 0;
+let MonsterXP = 100;
+let MonsterDamage = 10;
+let MonsterEnergeScill = 0;
+
+let GetRandom; 
+
+let XPHerous;
+let XPZla;
+//Переменные которым присваиваются бульбочки из html кода
+const Window = document.getElementById("window");
 let buttonGame = document.querySelectorAll('.ColorButton');
-console.log(buttonGame);
+let a = document.getElementById("Saef1");
+//
+const SelectionField = document.getElementById("selectionField");
+let WP = document.getElementById("w");
+const fight = document.getElementById("Fight");
+const fight1 = document.getElementById("Fight1");
+const fight2 = document.getElementById("Fight2");
+//
+const worldFight = document.getElementById("WorldFight");
+let Character = document.getElementById("Ikon1");
+let MonsterCharacter = document.getElementById("Ikon2");
+let heightMotion = document.getElementById("Height1");
+let WindowFight = document.getElementById("windoFight");
+let specifications = document.querySelectorAll('.Abilities');
+let enemy = document.querySelectorAll('.Enemy');
+let buttonAttack = document.getElementById("Attack");
+let buttonHill = document.getElementById("Xill");
+let buttonScill = document.getElementById("Q");
+//
+let finish = document.getElementById("Finish");
+let nameFinish = document.getElementById("NameFinish");
+//Конец всем основным переменным дальше идут только переменные с музыкой--------
+let fon = document.getElementById("Fon");
+
+
+
+
 function colorOver1(){
         buttonGame[0].style.backgroundColor = "#A7FF83";
         buttonGame[0].style.color = "black";
@@ -73,22 +120,11 @@ buttonGame[6].addEventListener('mouseover', colorOver7);
 buttonGame[6].addEventListener('mouseout', colorOut7);
 
 //По нажатию кнопки сохраняются данные которые игрок ввёл и переход на следующую страницу 
-let inputName;
-let WP = document.getElementById("w");
 
-const Window = document.getElementById("window");
-const SelectionField = document.getElementById("selectionField");
-const worldFight = document.getElementById("WorldFight");
-let You;
-let a = document.getElementById("Saef1");
-console.log(a);
 const I1 = function myName(){
     inputName = document.getElementById("Name1").value;
-    //console.log(inputName);
     const personaMan = document.getElementById("man").checked;
     const personaGirl = document.getElementById("girl").checked;
-    //console.log(personaMan);
-    //console.log(personaGirl);
     let Persona;
     if(personaMan){
         Persona = "Ты выбрал Парня";
@@ -114,13 +150,9 @@ a.addEventListener('click', I1);
 a.addEventListener('click', AudioFon);
 
 //Далее идёт код для работы с боями
-const fight = document.getElementById("Fight");
 
-const fight1 = document.getElementById("Fight1");
 
-const fight2 = document.getElementById("Fight2");
 
-let WindowFight = document.getElementById("windoFight");
 function startFight(){
     SelectionField.hidden = true;
     worldFight.hidden = false;
@@ -136,28 +168,16 @@ fight1.addEventListener('click', startFight1);
 fight2.addEventListener('click', startFight);
 
 
-let finish = document.getElementById("Finish");
-let nameFinish = document.getElementById("NameFinish");
-
 //Сама бевая система
-let Win = 0;
-let Character = document.getElementById("Ikon1");
-let MonsterCharacter = document.getElementById("Ikon2");
 
-let specifications = document.querySelectorAll('.Abilities');
+
+
 console.log(specifications);
-
-let XP;
-let Damage;
-let Scill;
-
-let Monster = 0;
-let MonsterXP = 100;
-let MonsterDamage = 10;
-let MonsterEnergeScill = 0;
 
 
 function Specifications(){
+    fon.src = "Пещера.mp3";
+    fon.play();
     if(You == 1){
         XP = 75;
         Damage = 20;
@@ -183,6 +203,8 @@ function Specifications(){
     Monster = 1;
 }
 function Specifications1(){
+    fon.src = "Баар.mp3";
+    fon.play();
     if(You == 1){
         XP = 75;
         Damage = 20;
@@ -211,6 +233,8 @@ function Specifications1(){
     enemy[2].textContent = 'Scill: Юморист'; 
 }
 function Specifications2(){
+    fon.src = "Леес.mp3";
+    fon.play();
     if(You == 1){
         XP = 75;
         Damage = 20;
@@ -242,24 +266,13 @@ fight.addEventListener('click', Specifications);
 fight1.addEventListener('click', Specifications1);
 fight2.addEventListener('click', Specifications2);
 
-fight.addEventListener('click', AudioFonPeshera);
-fight1.addEventListener('click', AudioFonBar);
-fight2.addEventListener('click', AudioFonForest);
 
-let enemy = document.querySelectorAll('.Enemy');
-
-
-buttonAttack = document.getElementById("Attack");
-buttonHill = document.getElementById("Xill");
-buttonScill = document.getElementById("Q");
-
-let buttonEnergeScill = 0;
 
 Character.style.borderColor = "red";
-let heightMotion = document.getElementById("Height1");
 heightMotion.textContent = 'Ваш ход';
     
 function attack(){
+   if(Character.style.borderColor == "red"){
     fonAttack();
     if(Character.style.borderColor == "red"){
     heightMotion.textContent = 'Ваш ход';
@@ -289,7 +302,8 @@ function attack(){
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
-    setTimeout(MonsterAttack, 1000);
+    setTimeout(MonsterAttack, 1500);
+ } 
 }
 buttonAttack.addEventListener('click', attack);
 function hill(){
@@ -302,7 +316,7 @@ function hill(){
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
-    setTimeout(MonsterAttack, 1000);
+    setTimeout(MonsterAttack, 1500);
 }
 buttonHill.addEventListener('click', hill);
 function scill(){
@@ -328,19 +342,16 @@ function scill(){
     }
     Character.style.borderColor = "#086972";
     MonsterCharacter.style.borderColor = "red";
-    setTimeout(MonsterAttack, 1000);
+    setTimeout(MonsterAttack, 1500);
 }
 buttonScill.addEventListener('click', scill);
 
 
-
-let GetRandom; 
+ 
 function getRandom(){
     GetRandom = Math.random();
 }
 
-let XPHerous;
-let XPZla;
 
 function MonsterAttack(){
     if(MonsterCharacter.style.borderColor == "red"){
@@ -473,44 +484,10 @@ function MonsterAttack(){
 }
 
 //музакальная состовляющая игры
-let fon = document.getElementById("Fon");
-let fonBar = document.getElementById("fonFight1");
-let fonForest = document.getElementById("fonFight2");
-let fonPechera = document.getElementById("fonFight");
+
 function AudioFon(){
     fon.play();
     fon.volume = 0.2;
-}
-function AudioFonBar(){
-
-    fon.pause();
-    fonBar.play();
-    fonBar.volume = 0.2;
-    fonForest.pause();
-    fonPechera.pause();
-    fonForest.currentTime = 0;
-    fon.currentTime = 0;
-    fonPechera.currentTime = 0;
-}
-function AudioFonForest(){
-    fon.pause();
-    fonForest.play();
-    fonForest.volume = 0.2;
-    fonBar.pause();
-    fonPechera.pause();
-    fonBar.currentTime = 0;
-    fonPechera.currentTime = 0;
-    fon.currentTime = 0;
-}
-function AudioFonPeshera(){
-    fon.pause();
-    fonPechera.play();
-    fonPechera.volume = 0.2;
-    fonForest.pause();
-    fonBar.pause();
-    fonBar.currentTime = 0;
-    fon.currentTime = 0;
-    fonForest.currentTime = 0;
 }
 
 function fonAttack(){
