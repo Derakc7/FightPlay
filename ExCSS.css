@@ -112,7 +112,6 @@ h2{
     margin-top: 3vh;
     width: 15vh;
     height: 18vh;
-    background-color:#086972;
     word-wrap:normal;
     line-height: 3vh;
     margin-right: auto;
@@ -124,7 +123,6 @@ h2{
     margin-top: 3vh;
     width: 15vh;
     height: 18vh;
-    background-color:#086972;
     word-wrap:normal;
     line-height: 3vh;
     margin-left: auto;
@@ -132,13 +130,17 @@ h2{
 }
 .Abilities{
    width: 15vh;
-   height: 5vh;
-   margin: 0.5vh;
+   height: 3vh;
+   margin: 0px;
+   margin-bottom: 1.5vh;
+   border-radius: 20px;
 }
 .Enemy{
    width: 15vh;
-   height: 5vh;
-   margin: 0.5vh;
+   height: 3vh;
+   margin: 0px;
+   margin-bottom: 1.5vh;
+   border-radius: 20px
 }
 #Ikon1{
     width: 13vh;
@@ -185,7 +187,8 @@ h2{
     padding: 0vh;
     border-radius: 10px;
     color:black;
-    font-size: 80%;
+    font-size: 90%;
+    font-family:monospace;
 }
 
 #Attack{
